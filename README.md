@@ -7,7 +7,7 @@ Course project deliverables for the Coursera course [Getting and Cleaning Data](
 * Create a directory for this project, henceforth called `samsung`
 * Download the script `run_analysis.R` to `samsung` 
 * Download the raw data from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip to `samsung` and unzip it. You can delete the zip file after this step.
-  You directory structure should look like this now (only shown 2 levels deep):
+  Your directory structure should look like this now (only shown 2 levels deep):
  
  ```
     ├── UCI HAR Dataset
@@ -38,3 +38,7 @@ Note that `DeriveTidy2` uses the result from `DeriveTidy1` as input
 
 ## Codebook
 Information about the datasets is provided in `CodeBook.md`.     
+
+## Code 
+The code contains detailed commments explaining the steps in which the original data was transformed to `tidy1.csv` and `tidy2.csv` 
+

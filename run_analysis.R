@@ -29,20 +29,20 @@ DeriveTidy1 <- function(dataRootDir = "UCI HAR Dataset") {
   kSubjectTestFile <- FilePath("test/subject_test.txt")
   kSubjectTrainFile <- FilePath("train/subject_train.txt")
 
-  # step 1: merge training and test sets
+  #merge training and test sets
   testSet <- read.table(kXTestFile)
   trainingSet <- read.table(kXTrainFile)
   allObservations <- rbind(testSet,trainingSet)
 
-  # add feature names as column names
+  #add feature names as column names
   featureNames <- read.table(kFeaturesFile,stringsAsFactors=FALSE)[[2]]
   colnames(allObservations) <- featureNames
-  # step 2: only select the columns that have mean, std or activityLabel in their name
+  #only select the columns that have mean, std or activityLabel in their name
   allObservations <- allObservations[,grep("mean|std|activityLabel",featureNames)]
 
-  # rename variable names to more readable form.
-  # I have deliberately chosen not to rename to a full English words,
-  # because column names tend to get very long then
+  #rename variable names to more readable form.
+  #I have deliberately chosen not to rename to a full English words,
+  #because column names tend to get very long then
   varNames = names(allObservations)
   varNames <- gsub(pattern="^t",replacement="time",x=varNames)
   varNames <- gsub(pattern="^f",replacement="freq",x=varNames)
@@ -52,25 +52,25 @@ DeriveTidy1 <- function(dataRootDir = "UCI HAR Dataset") {
   varNames <- gsub(pattern="BodyBody",replacement="Body",x=varNames)
   names(allObservations) <- varNames
 
-  # step 3: use the activity names to name the activities in the set
+  #use the activity names to name the activities in the set
   activityLabels <- read.table(kActivityLabelsFile,stringsAsFactors=FALSE)
   colnames(activityLabels) <- c("activityID","activityLabel")
 
-  # step 4: appropriately label the data set with descriptive activity names
-  # first we create the activity column for the entire dataset, test+train:
+  #appropriately label the data set with descriptive activity names
+  #first we create the activity column for the entire dataset, test+train:
   testActivities <- read.table(kTestActivitiesFile,stringsAsFactors=FALSE)
   trainingActivities <- read.table(kTrainActivitiesFile,stringsAsFactors=FALSE)
   allActivities <- rbind(testActivities,trainingActivities)
-  # assign a column name so we can merge on it
+  #assign a column name so we can merge on it
   colnames(allActivities)[1] <- "activityID"
-  # join the activityLabels - we use join from the plyr package and not merge, because join
-  # preserves order
+  #join the activityLabels - we use join from the plyr package and not merge, because join
+  #preserves order
   activities <- join(allActivities,activityLabels,by="activityID")
 
-  # and add the column to the entire dataset
+  #and add the column to the entire dataset
   allObservations <- cbind(activity=activities[,"activityLabel"],allObservations)
 
-  # extra step: include the subject ids, for processing in the next step
+  #extra step: include the subject ids, for processing in the next step
   testSubjects <- read.table(kSubjectTestFile,stringsAsFactors=FALSE)
   trainingSubjects <- read.table(kSubjectTrainFile,stringsAsFactors=FALSE)
   allSubjects <- rbind(testSubjects,trainingSubjects)
@@ -82,7 +82,10 @@ DeriveTidy1 <- function(dataRootDir = "UCI HAR Dataset") {
 }
 
 DeriveTidy2 <- function(rawData) {
+  #create a long shaped dataset from a wide shaped dataset
   molten <- melt(rawData,id.vars= c("subject","activity"))
+  #transform the long shaped dataset back into a wide shaped dataset, aggregating on subject 
+  #and activity using the mean function
   cast <- dcast(molten, subject+activity ~ variable, fun.aggregate=mean)
   cast
 }
