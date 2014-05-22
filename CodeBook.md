@@ -4,7 +4,7 @@ Code book
 This document provides information about the generated sets by the script `run_analysis.R`, provided in this repository.
 
 ## Data sets
-The function `DeriveAndWriteDataSets` from the script `run_analysis.R` writes two datasets, `tidy1.csv` and `tidy2.csv`. The first one, `tidy1` is the result of a cleaning and selection of the data described in [Original data set](#Original data set). The second one, `tidy2.csv` is the result of an aggregation of `tidy1.csv`.
+The function `DeriveAndWriteDataSets` from the script `run_analysis.R` writes two datasets, `tidy1.csv` and `tidy2.csv`. The first one, `tidy1` is the result of a cleaning and selection of the data described in the section 'Original data set' below. The second one, `tidy2.csv` is the result of an aggregation of `tidy1.csv`.
 
 ### Data set `tidy1.csv`
 
