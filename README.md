@@ -1,7 +1,7 @@
 getting-and-cleaning-data-course-project
 ========================================
 
-Course project deliverables for the Coursera course 'Getting and Cleaning Data'
+Course project deliverables for the Coursera course [Getting and Cleaning Data](https://www.coursera.org/course/getdata)
 
 ## Installation
 * Create a directory for this project, henceforth called `samsung`
@@ -22,10 +22,10 @@ Course project deliverables for the Coursera course 'Getting and Cleaning Data'
 The script `run_analysis.R` depends on the libraries `plyr` and `reshape2`. If you have not installed them, you will be prompted a choice to do so.
     
 ## Running the analysis     
-* Change the working directory in R to the installation directory (called `samsung` in the [Install](#Install) section).     
+* Change the working directory in R to the installation directory (called `samsung` in the [Installation](#Installation) section).     
 * Source the script `run_analysis.R` in R: `source("run_analysis.R")`
 * Execute the function `DeriveAndWriteDataSets` with no arguments: `DeriveAndWriteDataSets()`
-* Two datasets will be written to your working directory now: `tidy1.csv` and `tidy2.csv` 
+  Two datasets will be written to your working directory now: `tidy1.csv` and `tidy2.csv` 
 
 If you want to retrieve the datasets in R, without writing them to CSV-files, you can run
 
