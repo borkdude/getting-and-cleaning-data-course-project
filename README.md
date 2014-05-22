@@ -34,7 +34,8 @@ If you want to retrieve the datasets in R, without writing them to CSV-files, yo
     tidy1 <- DeriveTidy1()
     tidy2 <- DeriveTidy2(tidy1)
 
-Note that `DeriveTidy2` uses the result from `DeriveTidy1` as input
+Note that `DeriveTidy2` uses the result from `DeriveTidy1` as input.
+The objects `tidy1` and `tidy2` are of class `data.frame`.
 
 ## Codebook
 Information about the datasets is provided in `CodeBook.md`.     
