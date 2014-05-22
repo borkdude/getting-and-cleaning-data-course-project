@@ -11,7 +11,7 @@ The function `DeriveAndWriteDataSets` from the script `run_analysis.R` writes tw
 The dataset `tidy1.csv` is the result of cleaning and selecting data from data from an experiment in which measurements were collected from the accelerometer and gyroscope from the Samsung Galaxy S smartphone used by 30 subjects carrying out a variety of 6 activities.
 More information about the measurements in the raw dataset is best obtained from the website where the dataset was taken from:
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
-For your convenience we have included information about the original data in the section [Original data set](#Original data set).
+For your convenience we have included information about the original data in the section 'Original data set'.
 
 Here follows a description of what `tidy1.csv` looks like.
 
