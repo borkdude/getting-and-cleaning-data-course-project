@@ -1,20 +1,18 @@
-# TODO make variable names cleaner:
-# - lowercase when possible
-# - descriptive
-# - no underscores, dots or whitespace: AgeAtDiagnosis instead of AgeDx
+# Check if dependencies are installed and require them.
+RequireOrInstall <- function(package) {
+  suppressWarnings({
+    if (!require(package,character.only=TRUE)) {
+      installPackage <- readline(paste("Package",package,"not found. Install? (y for yes, otherwise for no): "))
+      if (installPackage == "y") {
+        install.packages(package)
+      }
+      require(package,character.only=TRUE)  
+  }})
+}
+RequireOrInstall("plyr")
+RequireOrInstall("reshape2")
 
-
-
-# TODO, write code book: http://jtleek.com/modules/03_GettingData/01_03_componentsOfTidyData/#5
-
-# TODO check if all dependencies are met
-# TODO Google Style Guide on code? Constants start with k. etc?
-# TODO Lowercase activity names?
-
-library(plyr)
-library(reshape2)
-
-DeriveRawData <- function(dataRootDir = "UCI HAR Dataset") {
+DeriveTidy1 <- function(dataRootDir = "UCI HAR Dataset") {
 
   # utility function
   FilePath <- function(file) {
@@ -83,15 +81,15 @@ DeriveRawData <- function(dataRootDir = "UCI HAR Dataset") {
   sorted
 }
 
-DeriveTidyDataSet <- function(rawData) {
+DeriveTidy2 <- function(rawData) {
   molten <- melt(rawData,id.vars= c("subject","activity"))
   cast <- dcast(molten, subject+activity ~ variable, fun.aggregate=mean)
   cast
 }
 
 DeriveAndWriteDataSets <- function() {
-  raw <- DeriveRawData()
-  tidy <- DeriveTidyDataSet(raw)
-  write.csv(raw,file="raw.csv")
-  write.csv(tidy,file="tidy.csv")
+  tidy1 <- DeriveTidy1()
+  tidy2 <- DeriveTidy2(tidy1)
+  write.csv(tidy1,file="tidy1.csv")
+  write.csv(tidy2,file="tidy2.csv")
 }
