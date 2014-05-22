@@ -45,7 +45,7 @@ For example:
 A full description of the features is best obtained from the file `features_info.txt`, included with the original dataset (I found it unnecessary to duplicate all the information here).
 
 ### Data set `tidy2.csv`
-To form the dataset `tidy2.csv`, the observations from `tidy1.csv` were grouped by subject and activity and then aggregated using the mean function. This yields 180 rows (30 subjects times 6 activities) and 81 columns (1 for subject, 1 for activity plus 79 aggregated features.  
+To form the dataset `tidy2.csv`, the observations from `tidy1.csv` were grouped by subject and activity and then aggregated using the mean function. This yields 180 rows (30 subjects times 6 activities) and 81 columns (1 for subject, 1 for activity plus 79 aggregated features).  
 
 ## Original data set
 Taken from http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones:
